@@ -1,6 +1,6 @@
 nav{
     background-color: blue;
-    /* position: fixed; */
+    position: fixed;
     background-attachment: fixed;
 }
 .container{
@@ -20,10 +20,17 @@ nav{
     font-weight: 600;
 }
 .container a:hover{
-    color: red;
-    transition: ease-in-out 0.3ms;
+    color: rgb(129, 1, 1);
+    transition: ease-in-out 0.5ms;
 }
 .container img{
     width: 60px;
     border-radius: 50%;
+}
+.center-link{
+    margin-left: 200px;
+    display: flex;
+}
+.right-link{
+    margin-left: 400px;
 }

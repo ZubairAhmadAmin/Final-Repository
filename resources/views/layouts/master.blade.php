@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="CSS/navbar.css">
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="CSS/form.css">
+    <link rel="stylesheet" href="hotels.css">
 
 
     <!-- css link ..................................... -->
@@ -27,23 +28,27 @@
         <div class="container">
             <img class="img" src="{{URL('images/logo4.jpg')}}" alt="">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#search">Search</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/register">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/login">Login</a>
-                </li>
+                <div class="center-link">
+                    <li class="nav-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="search">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact">Contact</a>
+                    </li>
+                </div>
+                <div class="right-link">
+                </div>
+                    <li class="nav-item">
+                        <a href="/register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/login">Login</a>
+                    </li>
+            </div>
             </ul>
-        </div>
     </nav>
 
     @yield('contant')

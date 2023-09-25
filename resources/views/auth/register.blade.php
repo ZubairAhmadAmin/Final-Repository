@@ -1,5 +1,4 @@
-@extends('layout')
-@section('contant')
+@extends('layouts.master')
     <div class="home-color">
         <div class="background">
             <div class="shape"></div>
@@ -51,4 +50,3 @@
             </div>
         </form>
     </div>
-@endsection

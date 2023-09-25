@@ -60,8 +60,4 @@ class CustomAuthController extends Controller
             return back()->with('fail', 'This email is not registered!');
         }
     }
-
-    public function Dashboard () {
-        return view('dashboard');
-    }
 }

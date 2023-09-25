@@ -1,51 +1,55 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
 }
 /* https://github.com/ZubairAhmadAmin/Final-Project */
 
-   .home{
-    background-image: url('images/bg.jpg');
+.home {
+    background-image: url("images/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
     height: 90vh;
-  }
-  .home-title{
+    position: fixed;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+.home-title {
     padding: 5rem 8rem;
-  }
-  .the-best{
+}
+.the-best {
     background-color: #363d42;
-    border-radius: 30px 5px 30px;
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
     padding: 20px 13px;
+    border-radius: 50px;
     text-transform: uppercase;
     width: max-content;
     color: white;
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
-  }
-  .the-best>span{
+    justify-content: flex-start;
+}
+.the-best > span {
     z-index: 2;
     word-spacing: 4px;
     padding: 5px;
-  }
-  .the-best>div{
+}
+.the-best > div {
     position: absolute;
     background-color: orange;
     width: 355px;
     height: 80%;
     left: 8px;
-    border-radius: 30px 5px 30px;
-
-  }
-  .home-text{
+    border-radius: 50px
+}
+.home-text {
     display: flex;
     flex-direction: column;
     margin-top: 80px;
@@ -56,79 +60,103 @@
     letter-spacing: 1px;
     font-weight: bold;
     color: white;
-  }
-  .desc{
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+}
+.desc {
     margin-top: 20px;
     font-size: 1rem;
     font-weight: 600px;
     text-transform: none;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
     word-spacing: 1px;
     letter-spacing: 1px;
     width: 100%;
     color: rgb(0, 0, 255);
-  }
-  .span-text1{
+}
+.span-text1 {
     color: black;
-  }
-  .span-text2{
+}
+.span-text2 {
     color: red;
-  }
-  .span-text3{
+}
+.span-text3 {
     color: green;
-  }
+}
 
-  /* search page style ......................................................................... */
+/* search page style ......................................................................... */
 
-.search{
+.search {
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: space-between;
+    position: fixed;
 }
-.left-h{
+.left-h {
     width: 50%;
     height: 100%;
     position: relative;
     text-align: center;
 }
-.left-h h3{
-    color: blue;
-}
-.search-box{
+.search-box {
     margin-top: 200px;
+    /* font-size: 1.2rem; */
+    font-weight: 500;
 }
-.search-item{
+.left-h h3 {
+    color: blue;
+    margin-right: 100px;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+}
+/* <div class="search-box">
+<h3>Search Your Favirate Hall</h3>
+    <select type="text" class="searc field">
+        <option disabled selected>City</option>
+        <option value="kabul">kabul</option>
+        <option value="herat">Herat</option>
+        <option value="mazar">Mazari Shareef</option>
+        <option value="jlalabad">Jlalabad</option>
+    </select>
+        <button type="button" class="btn btn-primary mt-4">Search</button>
+</div> */
+/* .search-item{
     display: flex;
     align-items: center;
     padding: 10px;
-}
-.search-item input{
-    width: 400px;
-    height: 50px;
+} */
+.search-field {
+    width: 25rem;
+    height: 3.5rem;
     border-radius: 30px 0px 30px;
-    border: 2px solid blue;
-    margin-top: 20px;
-    margin-left: 80px;
+    margin-top: 30px;
+    margin-left: 30px;
+    border: none;
+    color: blue;
+    font-weight: 600;
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
 }
-.search-item button{
+.search-item button {
     width: 100px;
-    height: 50px;
-    border-radius: 30px 0px 30px;
-    
+    height: 3.5rem;
+    border-radius: 30px 0px 30px; 
+    margin-bottom: 25px; 
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
 }
-.right-h{
+.right-h {
     width: 50%;
     height: 100%;
     text-align: center;
     position: relative;
 }
-.right-h div{
+.right-h div {
     width: 100%;
     position: absolute;
     margin-top: 80px;
 }
-.right-h img{
+.right-h img {
     width: 220px;
     height: 150px;
     padding: 20px;
@@ -136,50 +164,55 @@
 
 /* contact page style .......................................................................... */
 
-.contact{
+.contact {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #1b2430;
-  }
-  .left{
+    position: fixed;
+}
+.left {
     width: 55%;
     height: 100%;
-  }
-  .left img{
+}
+.left img {
     width: 100%;
     height: 630px;
     background-color: #1b2430;
-  }
-  .right{
+}
+.right {
     width: 45%;
     height: 100%;
-  }
-  .right form div {
+}
+.right form div {
     width: 600px;
     border-radius: 30px 0px 30px;
-  }
-  .form-input{
-    border-radius: 10px;
-    background-color: lightgray;
+
+}
+.form-input {
     border-radius: 30px 0px 30px;
-    border: 2px solid black;
-  }
-  .right form textarea{
-    border-radius: 10px;
-    background-color: lightgray;
+    border: none;
+    font-weight: 500;
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
+}
+.right form textarea {
     border-radius: 30px 0px 30px;
-    border: 2px solid black;
-  }
-  .form-label{
+    border: none;
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
+}
+.form-label {
     color: blue;
     font-weight: 600;
-  }
-  .right button{
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+}
+.right button {
     width: 100px;
     height: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;
     border-radius: 30px 0px 30px;
     margin-left: 450px;
     cursor: pointer;
-
-  }
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
+}

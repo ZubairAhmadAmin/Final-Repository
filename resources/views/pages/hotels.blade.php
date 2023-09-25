@@ -1,10 +1,13 @@
-@extends('layout')
+
+@extends('layouts.master')
+@section('contant')
+
 
 
     
 {{--  @endsection  --}}
 
-<!DOCTYPE html>
+{{--  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,20 +15,15 @@
     <title>الماس</title>
     <link rel="stylesheet" href="hotels.css">
 </head>
-<body>
-    @section('content')
-@endsection
+<body>  --}}
+
     
-
-
-
-<div>i am very un lucky</div>
 <h1 class="text-center">ahmad zubair amin</h1>
 
     
 <div class="row">
     <div class="col-3 m-5">
-        <div class="card" style="box-shadow: 15px 15px 15px lightgray">
+        <div class="card">
             <img src="images/hotel1.jpg" class="card-img-top">
             <div class="card-body">
                 <h3>hote name: ستاره شهر</h3>
@@ -37,7 +35,7 @@
         </div>
     </div>
     <div class="col-3 m-5">
-        <div class="card" style="box-shadow: 15px 15px 15px lightgray">
+        <div class="card">
             <img src="images/hotel1.jpg" class="card-img-top">
             <div class="card-body">
                 <h3>hote name: ستاره شهر</h3>
@@ -49,7 +47,7 @@
         </div>
     </div>
     <div class="col-3 m-5">
-        <div class="card" style="box-shadow: 15px 15px 15px lightgray">
+        <div class="card">
             <img src="images/hotel1.jpg" class="card-img-top">
             <div class="card-body">
                 <h3>hote name: ستاره شهر</h3>
@@ -61,7 +59,7 @@
         </div>
     </div>
     <div class="col-3 m-5">
-        <div class="card" style="box-shadow: 15px 15px 15px lightgray">
+        <div class="card">
             <img src="images/hotel1.jpg" class="card-img-top">
             <div class="card-body">
                 <h3>hote name: ستاره شهر</h3>
@@ -73,7 +71,7 @@
         </div>
     </div>
     <div class="col-3 m-5">
-        <div class="card" style="box-shadow: 15px 15px 15px lightgray">
+        <div class="card">
             <img src="images/hotel1.jpg" class="card-img-top">
             <div class="card-body">
                 <h3>hote name: ستاره شهر</h3>
@@ -85,7 +83,7 @@
         </div>
     </div>
     <div class="col-3 m-5">
-        <div class="card" style="box-shadow: 15px 15px 15px lightgray">
+        <div class="card">
             <img src="images/hotel1.jpg" class="card-img-top">
             <div class="card-body">
                 <h3>hote name: ستاره شهر</h3>
@@ -98,7 +96,8 @@
     </div>
 </div>
 
-</body>
+@endsection
+{{--  </body>
 </html>
-
+  --}}
 
