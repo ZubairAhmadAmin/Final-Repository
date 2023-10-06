@@ -12,11 +12,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class CustomAuthController extends Controller
 {
     public function login () {
-        return view("auth.login");
+        return view("Frontend.auth.login");
     }
 
     public function registration () {
-        return view("auth.register");
+        return view("Frontend.auth.register");
     }
 
     public function registerUser (Request $request) {
