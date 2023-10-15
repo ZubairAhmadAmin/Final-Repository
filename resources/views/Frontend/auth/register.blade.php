@@ -1,4 +1,6 @@
-@extends('Frontend.layouts.master')
+@extends('Frontend.layouts.app')
+
+@section('style')
     <div class="home-color">
         <div class="background">
             <div class="shape"></div>
@@ -46,7 +48,12 @@
                     </span>
                 </div>
 
-                <button class="form-btn"><a href="login">Register</a></button>
+                <button class="form-btn">Register</button>
+                <button id="back-btn" class="btn btn-light mt-3 text-decoration-none"><a
+                    href="/">Back</a></button>
+                <button id="back-btn" class="btn btn-light mt-3 text-decoration-none float-end"><a
+                    href="login">Login</a></button>
             </div>
         </form>
     </div>
+@endsection

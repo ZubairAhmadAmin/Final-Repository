@@ -1,4 +1,7 @@
-@extends('Frontend.layouts.master')
+@extends('Frontend.layouts.app')
+@section('style')
+    
+
 
     <div class="home-color">
         <div class="background">
@@ -41,3 +44,4 @@
             </div>
         </form>
     </div>
+    @endsection

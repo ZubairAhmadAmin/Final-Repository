@@ -24,32 +24,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg">
-        <div class="container">
-            <img class="img" src="{{URL('images/logo4.jpg')}}" alt="">
-            <ul class="navbar-nav">
-                <div class="center-link">
-                    <li class="nav-item">
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="search">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact">Contact</a>
-                    </li>
-                </div>
-                <div class="right-link">
-                </div>
+    <div class="home-nav">
+        <div class="left-nav">
+            <ul class="nav-list"> 
+                <img class="img" src="{{URL('images/logo4.jpg')}}" alt="">   
+                <li class="nav-item">
+                    <a href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact">Contact</a>
+                </li>
+            </ul>
+            </div>
+            <div class="right-nav">
+                <ul class="nav-list">
                     <li class="nav-item">
                         <a href="/register">Register</a>
                     </li>
                     <li class="nav-item">
                         <a href="/login">Login</a>
                     </li>
-            </div>
-            </ul>
-    </nav>
+                </ul>
+        </div>
+    </div>
 
     @yield('contant')
 </body>

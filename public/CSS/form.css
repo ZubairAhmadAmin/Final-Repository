@@ -46,7 +46,7 @@
     box-shadow: -10px -10px 20px #f87358;
 }
 .register{
-    height: 520px;
+    height: 580px;
     width: 400px;
     background-color: rgb(255, 255, 255, 0.13);
     position: absolute;
@@ -56,7 +56,7 @@
     border-radius: 10px;
     border: 2px solid rgba(139, 61, 61, 0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
+    padding: 40px 25px;
 }
 .register *{
     font-family: 'Poppins',sans-serif;
@@ -74,7 +74,7 @@
 
 label{
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 16px;
     font-weight: 500;
 }
@@ -107,11 +107,15 @@ input{
     color: black;
 }
 #back-btn{
-    width: 100px;
-    height: 50px;
-    border-radius: 30px 0px 30px;
-    cursor: pointer;
+    margin-top: 40px;
+    width: 30%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 10px 0;
+    font-size: 18px;
     font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;;
 }
 
   /* background-color: rgba(255,255,255,0.47); */

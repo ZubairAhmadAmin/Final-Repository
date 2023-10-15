@@ -1,24 +1,8 @@
 
-@extends('Frontend.layouts.master')
-@section('contant')
-
-
-
-    
-{{--  @endsection  --}}
-
-{{--  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الماس</title>
-    <link rel="stylesheet" href="hotels.css">
-</head>
-<body>  --}}
-
-    
+@extends('Frontend.layouts.app')
+@section('style')    
 <h1 class="text-center">Kabul</h1>
+<button class="btn btn-primary ms-5"><a href="/">Back</a></button>
 
     
 <div class="row">
@@ -30,7 +14,7 @@
                 <p>Hotel Address: میدانی هوایی</p>
                 <p>Booking Price :10000</p>
                 <p>Totle Capacity: 2000</p>
-                <button class="btn btn-primary" style="margin-left: 200px"><a href="hotel">Details</a></button>
+                <button class="btn btn-primary float-end"><a href="hotel">Details</a></button>
             </div>
         </div>
     </div>
@@ -42,7 +26,7 @@
                 <p>Hotel Address: میدانی هوایی</p>
                 <p>Booking Price :1000</p>
                 <p>Totle Capacity: 2000</p>
-                <button class="btn btn-primary" style="margin-left: 200px"><a href="hotel">Details</a></button>
+                <button class="btn btn-primary float-end"><a href="hotel">Details</a></button>
             </div>
         </div>
     </div>
@@ -54,7 +38,7 @@
                 <p>Hotel Address: میدانی هوایی</p>
                 <p>Booking Price :10000</p>
                 <p>Totle Capacity: 2000</p>
-                <button class="btn btn-primary" style="margin-left: 200px"><a href="hotel">Details</a></button>
+                <button class="btn btn-primary float-end"><a href="hotel">Details</a></button>
             </div>
         </div>
     </div>
@@ -66,7 +50,7 @@
                 <p>Hotel Address: میدانی هوایی</p>
                 <p>Booking Price :10000</p>
                 <p>Totle Capacity: 2000</p>
-                <button class="btn btn-primary" style="margin-left: 200px"><a href="hotel">Details</a></button>
+                <button class="btn btn-primary float-end"><a href="hotel">Details</a></button>
             </div>
         </div>
     </div>
@@ -78,7 +62,7 @@
                 <p>Hotel Address: میدانی هوایی</p>
                 <p>Booking Price :10000</p>
                 <p>Totle Capacity: 2000</p>
-                <button class="btn btn-primary" style="margin-left: 200px"><a href="hotel">Details</a></button>
+                <button class="btn btn-primary float-end"><a href="hotel">Details</a></button>
             </div>
         </div>
     </div>
@@ -90,7 +74,7 @@
                 <p>Hotel Address: میدانی هوایی</p>
                 <p>Booking Price :10000</p>
                 <p>Totle Capacity: 2000</p>
-                <button class="btn btn-primary" style="margin-left: 200px"><a href="hotel">Details</a></button>
+                <button class="btn btn-primary float-end"><a href="hotel">Details</a></button>
             </div>
         </div>
     </div>

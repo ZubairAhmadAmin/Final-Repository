@@ -4,29 +4,20 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-::-webkit-scrollbar {
-    display: none;
-}
 /* https://github.com/ZubairAhmadAmin/Final-Project */
-
 .home {
-    background-image: url("images/bg.jpg");
+    background-image: url("images/home-bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     position: fixed;
-}
-::-webkit-scrollbar {
-    display: none;
-}
-.home-title {
-    padding: 5rem 8rem;
 }
 .the-best {
     background-color: #363d42;
     box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
     padding: 20px 13px;
+    margin: 100px 0 0px 50px;
     border-radius: 50px;
     text-transform: uppercase;
     width: max-content;
@@ -49,7 +40,44 @@
     left: 8px;
     border-radius: 50px
 }
-.home-text {
+.search-box {
+    text-align: center;
+}
+h3 {
+    color: rgb(255, 255, 255);
+    margin-bottom: 50px;
+    font-weight: 600;
+    font-size: 30px;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+}
+.search-field {
+    width: 25rem;
+    height: 3.5rem;
+    margin-left: 360px;
+    border: none;
+    font-size: large;
+    border: none;
+    font-weight: bold;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
+}
+.search-item button {
+    width: 100px;
+    height: 3.5rem;
+    border-radius: 15px;
+    background-color: rgb(35, 35, 253);
+    margin-bottom: 25px; 
+    font-weight: 600;
+    font-size: large;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
+}
+.search-item button a{
+    text-decoration: none; 
+    color: white;
+}
+/* .home-text {
     display: flex;
     flex-direction: column;
     margin-top: 80px;
@@ -81,87 +109,38 @@
 }
 .span-text3 {
     color: green;
-}
+} */
 
-/* search page style ......................................................................... */
+/* About page style ......................................................................... */
 
-.search {
+.about{
+    background-image: url("images/about-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     position: fixed;
 }
-.left-h {
-    width: 50%;
-    height: 100%;
-    position: relative;
+.about-desc{
+    width: 80%;
     text-align: center;
+    margin: 50px auto;
 }
-.search-box {
-    margin-top: 200px;
-    /* font-size: 1.2rem; */
+.about-desc h1{
+    color: black;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+}
+.about-desc p{
+    color: black;
     font-weight: 500;
-}
-.left-h h3 {
-    color: blue;
-    margin-right: 100px;
+    text-align: justify;
+    margin-top: 50px;
+    line-height: 30px;
+    font-size: 20px;
     text-shadow: 2px 2px 4px rgb(73, 68, 68);
 }
-/* <div class="search-box">
-<h3>Search Your Favirate Hall</h3>
-    <select type="text" class="searc field">
-        <option disabled selected>City</option>
-        <option value="kabul">kabul</option>
-        <option value="herat">Herat</option>
-        <option value="mazar">Mazari Shareef</option>
-        <option value="jlalabad">Jlalabad</option>
-    </select>
-        <button type="button" class="btn btn-primary mt-4">Search</button>
-</div> */
-/* .search-item{
-    display: flex;
-    align-items: center;
-    padding: 10px;
-} */
-.search-field {
-    width: 25rem;
-    height: 3.5rem;
-    margin-top: 30px;
-    margin-left: 30px;
-    border: none;
-    color: blue;
-    font-weight: 600;
-    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
-}
-.search-item button {
-    width: 100px;
-    height: 3.5rem;
-    margin-bottom: 25px; 
-    font-weight: 600;
-    text-shadow: 2px 2px 4px rgb(73, 68, 68);
-    box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
-}.search-item button a{
-    text-decoration: none; 
-    color: white;
-}
-.right-h {
-    width: 50%;
-    height: 100%;
-    text-align: center;
-    position: relative;
-}
-.right-h div {
-    width: 100%;
-    position: absolute;
-    margin-top: 80px;
-}
-.right-h img {
-    width: 220px;
-    height: 150px;
-    padding: 20px;
-}
+
 
 /* contact page style .......................................................................... */
 
@@ -186,10 +165,10 @@
     height: 100%;
 }
 .right form div {
-    width: 600px;
+    width: 550px;
     height: 500px;
     border-radius: 30px 0px 30px;
-
+    margin-bottom: 120px;
 }
 .form-input {
     border: none;
@@ -205,14 +184,54 @@
     font-weight: 600;
     text-shadow: 2px 2px 4px rgb(73, 68, 68);
 }
-.right button {
-    width: 100px;
-    height: 50px;
-    font-weight: 600;
-    margin-bottom: 50px;
-    border-radius: 30px 0px 30px;
-    margin-left: 450px;
-    cursor: pointer;
+
+
+/* hotels page style ........................................................................... */
+
+.card{
     text-shadow: 2px 2px 4px rgb(73, 68, 68);
     box-shadow: 1px 1px 2px lightgray, 0 0 25px rgb(109, 98, 98), 0 0 5px rgb(107, 97, 97);
+}
+button a{
+    color: white;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+}
+button a:hover{
+    color: white;
+}
+
+/* my hotel page style ......................................................................... */
+
+.my-hotel{
+    width: 100vw;
+    height: 40vh;
+    text-align: center;
+    background-color: rgb(136, 1, 1);
+}
+.my-hotel img{
+    height: 100%;
+}
+.menu{
+    text-align: center;
+}
+.menu img{
+    width: 80%;
+}
+.book-btn{
+    background-color: rgb(82, 0, 0);
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    border: none;
+    margin: 40px 150px;
+}
+.book-btn a{
+    text-decoration: none;
+    color: yellow;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
+}
+.book-btn:hover{
+    color: white;
 }
