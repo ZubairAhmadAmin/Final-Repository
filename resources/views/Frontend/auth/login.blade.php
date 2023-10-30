@@ -39,7 +39,7 @@
             </div>
             <div>
                 <button class="form-btn">Log In</button>
-                <button id="back-btn" class="btn btn-light mt-5 text-decoration-none"><a
+                <button id="back-btn" class="btn btn-light mt-5"><a
                         href="register">Back</a></button>
             </div>
         </form>

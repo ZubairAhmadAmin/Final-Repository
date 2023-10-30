@@ -40,8 +40,12 @@
     <div class="menu">
       <img src="{{URL('images/menu.jpg')}}" alt="">
     </div>
-    <button class="book-btn float-end"><a href="booking">Book Now</a></button>
-    <button class="book-btn"><a href="hotels">Back</a></button>
+    <button class="book-btn"><a href="booking">Book Now</a></button>
+    <button class="book-btn float-end"><a href="hotels">Back</a></button>
+    <select>Please select city
+        <option name="1">Kabul</option>
+    </select>
+
 </div>
 
 @endsection

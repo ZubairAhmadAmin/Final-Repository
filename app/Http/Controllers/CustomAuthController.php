@@ -15,7 +15,7 @@ class CustomAuthController extends Controller
         return view("Frontend.auth.login");
     }
 
-    public function registration () {
+    public function register () {
         return view("Frontend.auth.register");
     }
 
@@ -60,4 +60,11 @@ class CustomAuthController extends Controller
             return back()->with('fail', 'This email is not registered!');
         }
     }
+//     public function index () {
+//         $data = array();
+//         if(Session()->has('loginId')) {
+//             $data = User::where('id', '=', Session()->get('loginId'))->first();   
+//         }
+//         return view('Backend.layouts.master', compact('data'));
+//     }
 }

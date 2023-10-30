@@ -16,6 +16,7 @@
 }
 .nav-item{
     list-style: none;
+    text-shadow: 2px 2px 4px rgb(73, 68, 68);
     transition: all 0,5s ease-in-out;
 }
 .nav-item a:hover{
