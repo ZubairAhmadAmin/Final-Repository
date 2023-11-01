@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\City;
+use App\Models\HotelSalons;
+use App\Models\HotelServices;
 
 class Hotel extends Model
 {
@@ -23,4 +25,12 @@ class Hotel extends Model
         'hotel_image',
         'city_id'
     ];
+    
+    public function salons () {
+        return $this->hasMany(HotelSalons::class);
+    }
+
+    public function services () {
+        return $this->hasMany(HotelServices::class);
+    }
 }
