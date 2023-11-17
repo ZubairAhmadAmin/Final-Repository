@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="backend/dashboard.css">
+    <link rel="stylesheet" href="{{asset('backend/dashboard.css')}}">
     <link rel="stylesheet" href="{{ asset('Bootstrap/Css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/jquery-ui/jquery-ui.min.css') }}">
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/jquery-ui/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('Bootstrap/Js/bootstrap.min.js')}}"></script>
+
 
     {{-- bootstrap link................... --}}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 
 </head>
 <body>
@@ -21,22 +28,18 @@
         </div>
         <ul class="menu">
             <li class="active">
-                <a href="#"><span>Dashboard</span></a>
+                <a href="{{url('dashboard')}}"><span>Hotels</span></a>
             </li>
             <li>
-                <a href="#"><span>Dashboard</span></a>
+                <a href="{{url('bookings')}}"><span>Bookings</span></a>
             </li>
-            <li>
-                <a href="#"><span>Dashboard</span></a>
-            </li>
-            <li>
-                <a href="#"><span>Dashboard</span></a>
-            </li>
-            <li>
-                <a href="#"><span>Dashboard</span></a>
-            </li>
+            @if(\Auth::user()->user_type == 2)
+                <li>
+                    <a href="{{url('users')}}"><span>Users</span></a>
+                </li>
+            @endif
             <li class="logout">
-                <a href="login">Logout</a>
+                <a href="{{url('logout')}}">Logout</a>
             </li>
         </ul>
     </div>

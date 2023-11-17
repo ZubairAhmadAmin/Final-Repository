@@ -9,10 +9,11 @@
             <tr class="text-primary">
                 <th>Hotel Name</th>
                 <th>Hotel Address</th>
-                <th>Booking Price</th>
-                <th>Total Solon</th>
+                <th>Hotel Owner</th>
+                <th>Email</th>
+                <th>Mobile NUmber</th>
+                <th>Total Salons</th>
                 <th>Total Capacity</th>
-                <th>Hotel Image</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -22,10 +23,12 @@
                 <tr>
                     <td>{{$item->hotel_name}}</td>
                     <td>{{$item->hotel_address}}</td>
-                    <td>{{$item->booking_price}}</td>
-                    <td>{{$item->total_solon}}</td>
+                    <td>{{$item->owner->name}}</td>
+                    <td>{{$item->email}}</td>
+                    <td>{{$item->mobile_number}}</td>
+                    <td>{{$item->total_salons}}</td>
                     <td>{{$item->total_capacity}}</td>
-                    <td>{{$item->hotel_image}}</td>
+                    <td><a href="{{url('show-hotel/'. $item->id)}}" class="btn btn-success btn-sm">View</a></td>
                     <td><a href="{{url('edit/'. $item->id)}}" class="btn btn-success btn-sm">Edit</a></td>
                     <td><a href="{{url('delete/'.$item->id)}}" class="btn btn-danger btn-sm">Delete</a></td>
                 </tr>

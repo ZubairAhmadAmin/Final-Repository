@@ -7,6 +7,8 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ShowHotelController;
+use App\Http\Controllers\HotelBookingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\PostDec;
 
@@ -34,15 +36,27 @@ Route::get('/login', [CustomAuthController::class, 'login']) ->middleware('alrea
 Route::get('/register', [CustomAuthController::class, 'register']) ->middleware('alreadyLoggedIn');
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('login-user');
-// Route::get('/dashboard', [CustomAuthController::class, 'index']);
+Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
 
 Route::get('dashboard', [HotelController::class, 'index']);
 Route::get('create', [HotelController::class, 'create']);
 Route::post('store', [HotelController::class, 'store']);
+Route::get('show-hotel/{id}', [HotelController::class, 'show'])->name("showHotel");
 Route::get('edit/{id}', [HotelController::class, 'edit']);
 Route::put('update/{id}', [HotelController::class, 'update']);
 Route::get('delete/{id}', [HotelController::class, 'destroy']);
 
 Route::get('data', [CityController::class, 'index']);
+
+Route::post('hotel/{id}/book', [HotelBookingController::class, 'store'])->name("book-hotel");
+Route::get('bookings', [HotelBookingController::class, 'index']);
+Route::get('show/{id}', [HotelBookingController::class, 'show'])->name("showBooking");;
+Route::get('edit/{id}', [HotelBookingController::class, 'edit'])->name("editBooking");;
+Route::get('delete/{id}', [HotelBookingController::class, 'delete'])->name("deleteBooking");
+Route::post('booking-status/{id}', [HotelBookingController::class, 'ApplyBookingStatusAction']);
+
+Route::get('users', [UserController::class, 'index']);
+
+

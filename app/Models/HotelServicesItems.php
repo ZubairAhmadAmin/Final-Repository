@@ -9,6 +9,7 @@ use App\Models\HotelServices;
 class HotelServicesItems extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function hotelService () {
         return $this->belongsTo(HotelServices::class);

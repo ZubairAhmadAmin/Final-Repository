@@ -46,8 +46,8 @@
     box-shadow: -10px -10px 20px #f87358;
 }
 .register{
-    height: 580px;
-    width: 400px;
+    height: fit-content;
+    width: 50%;
     background-color: rgb(255, 255, 255, 0.13);
     position: absolute;
     transform: translate(-50%,-50%);

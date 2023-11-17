@@ -88,3 +88,16 @@ body{
 .header-title{
     color: rgba(113, 99, 186, 255);
 }
+
+.bg-body-tertiary {
+    --bs-bg-opacity: 1;
+    background-color: rgba(43,48,53,1) !important;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}

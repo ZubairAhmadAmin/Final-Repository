@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\City;
 use App\Models\HotelSalons;
 use App\Models\HotelServices;
+use App\Models\User;
 
 class Hotel extends Model
 {
@@ -15,15 +16,16 @@ class Hotel extends Model
     }
 
     use HasFactory;
-    protected $tabale = 'hotels';
+    protected $table = 'hotels';
     protected $fillable = [
         'hotel_name',
         'hotel_address',
         'booking_price',
-        'tolal_solon',
+        'tolal_salons',
         'total_capacity',
-        'hotel_image',
-        'city_id'
+        'hotel_images',
+        'city_id',
+        'videos'
     ];
     
     public function salons () {
@@ -32,5 +34,9 @@ class Hotel extends Model
 
     public function services () {
         return $this->hasMany(HotelServices::class);
+    }
+
+    public function owner() {
+        return $this->belongsTo(User::class, 'hotel_user_id');
     }
 }
