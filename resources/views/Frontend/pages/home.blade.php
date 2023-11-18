@@ -59,11 +59,9 @@
                     <div class="search-item" id="navbar-search-autocomplete" class="form-outline">
                         <select type="text" class="search-field" name="search_term">
                             <option disabled selected>City</option>
-                            <option value="1">kabul</option>
-                            <option value="2">Herat</option>
-                            <option value="3">Mazari Shareef</option>
-                            <option value="4">Nangarhar</option>
-                            <option value="5">Kandahar</option>
+                            @foreach($cities as $city)
+                            <option value="{{$city->id}}">{{$city->city_name}}</option>
+                            @endforeach
                         </select>
                         <button type="submit" class="btn btn-primary mt-4">Search</button>
                     </div>

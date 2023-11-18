@@ -11,9 +11,11 @@ use App\Http\Controllers\HotelBookingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\PostDec;
+use App\Models\City;
 
 Route::get('/', function () {
-    return view('Frontend.pages.home')->with('page', '/');
+    $cities = City::all();
+    return view('Frontend.pages.home')->with(['page'=>'/', 'cities' => $cities]);
 });
 Route::get('about', function () {
     return view('Frontend.pages.about') ->with('page', 'about');
