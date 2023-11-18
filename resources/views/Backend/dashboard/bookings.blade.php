@@ -14,6 +14,7 @@
                 <th>Guests Count</th>
                 <th>Booked Salons</th>
                 <th>Booked Services</th>
+                <th>Booking Total</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -21,6 +22,14 @@
         <tbody>
             
             @foreach ($bookings as $index => $item)
+                <?php 
+                    $servicePrices = $item->services->pluck('price');
+                    $total = 0;
+                    foreach($servicePrices as $index => $price) {
+                        if ($index == 0) $total = $total + $item->guests_count * $price;
+                        else $total = $total + $price;
+                    }
+                ?>
                 <tr>
                     <td>{{$index + 1}}</td>
                     <td>{{$item->hotel->hotel_name}}</td>
@@ -29,6 +38,7 @@
                     <td>{{$item->guests_count}}</td>
                     <td>{{implode(',', $item->salons->pluck(['name'])->toArray())}}</td>
                     <td>{{implode(',', $item->services->pluck(['name'])->toArray())}}</td>
+                    <td>{{$total}} Afg</td>
                     <td>
                         @if ($item->status == 0) <span class="badge bg-info text-dark">Pending</span>
                         @elseif ($item->status == 1) <span class="badge text-light bg-success">Approved</span>
@@ -37,8 +47,10 @@
 
                     </td>
                     <td><a href="{{route('showBooking', [$item->id])}}" class="btn btn-success btn-sm">View</a></td>
-                    <td><a href="{{route('editBooking', [$item->id])}}" class="btn btn-success btn-sm">Edit</a></td>
-                    <td><a href="{{route('deleteBooking',[$item->id])}}" class="btn btn-danger btn-sm">Delete</a></td>
+                    @if(Auth::user()->user_type == 2 || Auth::user() == $item->booker)
+                        <td><a href="{{route('editBooking', [$item->id])}}" class="btn btn-success btn-sm">Edit</a></td>
+                        <td><a href="{{route('deleteBooking',[$item->id])}}" class="btn btn-danger btn-sm">Delete</a></td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

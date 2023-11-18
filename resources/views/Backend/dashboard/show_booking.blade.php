@@ -1,11 +1,20 @@
 @extends('Backend.layouts.master')
 
 @section('contant')
-<?php $images = json_decode($booking->hotel->hotel_images); ?>
+<?php 
+  $images = json_decode($booking->hotel->hotel_images);
+  $servicePrices = $booking->services->pluck('price');
+  $total = 0;
+  foreach($servicePrices as $index => $price) {
+      if ($index == 0) $total = $total + $booking->guests_count * $price;
+      else $total = $total + $price;
+  }
+?>
 <div class="container">
+@if(in_array(Auth::user()->user_type, [1,2]))
 <form action="{{ url('booking-status/'.$booking->id) }}" enctype="multipart/form-data" method="post" class="needs-validation" novalidate="" id="hotel-form">
   @csrf
-  <div class="row">
+  <div class="row p-5 my-5 shadow-lg" style="background:white;border-radius:0.5rem">
     <div class="">
         <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="0" {{$booking->status == 0 ? 'checked': ''}}>
@@ -30,14 +39,18 @@
     </div>
   </div>
 </form>
-<div class="row featurette" style="margin-top:5rem">
+@endif
+<div class="row featurette p-5 my-5 shadow-lg rounded-3 bg-white" style="margin-top:5rem">
+<h2 class="text-center mt-3 mb-5">Hotel Details</h2>
+
   <div class="col-md-7">
     <h2 class="featurette-heading fw-normal lh-1">{{$booking->hotel->hotel_name}}</h2>
-    <i class="bi bi-geo-alt-fill"></i><span>{{$booking->hotel->city->city_name}}</span><span> - {{$booking->hotel->hotel_address}}</span>
-    <p>{{$booking->booker->name}}</p>
-    <p>{{$booking->booking_date}}</p>
-    <p>{{$booking->guests_count}}</p>
-    <p>
+    <p>Address: <span>{{$booking->hotel->city->city_name}}</span><span> - {{$booking->hotel->hotel_address}}</span></p>
+    <p>Booker Name: {{$booking->booker->name}}</p>
+    <p>Booking Date: {{$booking->booking_date}}</p>
+    <p>Guests Count: {{$booking->guests_count}}</p>
+    <p>Booking Total: {{$total}} Afg</p>
+    <p>Status: 
       @if ($booking->status == 0) <span class="badge bg-info text-dark">Pending</span>
       @elseif ($booking->status == 1) <span class="badge text-light bg-success">Approved</span>
       @else <span class="badge bg-danger text-light">Rejected</span>
@@ -47,17 +60,18 @@
 
   </div>
   <div class="col-md-5">
-    <img src="{{asset(Storage::url($images[0]))}}" width="500px" height="500px"/>
+    <img class="rounded-3 shadow-sm" src="{{asset(Storage::url($images[0]))}}" width="500px" height="500px"/>
   </div>
 </div>
 
-<div class="album py-5 bg-body-tertiary">
+<div class="album row p-5 my-5 shadow-lg rounded-3 bg-white">
         <div class="container">
+        <h2 class="text-center mt-3 mb-5">Booking Salons</h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach($booking->salons as $salon)
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="{{asset(Storage::url(json_decode($salon->photos)[0]))}}" width="100%" height="225"/>
+                            <img class="shadow-sm" src="{{asset(Storage::url(json_decode($salon->photos)[0]))}}" width="100%" height="225"/>
                             <div class="card-body">
                                 <h2>{{$salon->name}}</h2>
                                 <p>Capacity: {{$salon->max_guests_capacity}}</p>
@@ -77,8 +91,9 @@
         </div>
   </div>
 
-  <div class="album py-5 bg-body-tertiary mt-5">
+  <div class="album row p-5 my-5 shadow-lg rounded-3 bg-white">
         <div class="container">
+        <h2 class="text-center mt-3 mb-5">Booking Services</h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @foreach($booking->services as $service)
                     <div class="col">
@@ -86,7 +101,7 @@
                             <img src="{{asset(Storage::url(json_decode($service->photos)[0]))}}" width="100%" height="225"/>
                             <div class="card-body">
                                 <h2>{{$service->name}}</h2>
-                                <p>Price: {{$service->price}}</p>
+                                <p>Price: {{$service->price}} Afg</p>
                                 <p class="card-text">{{$service->description}}</p>
                                 <div class="">
                                     @foreach($service->serviceItems as $item)

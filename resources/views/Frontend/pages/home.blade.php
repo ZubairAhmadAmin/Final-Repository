@@ -23,6 +23,9 @@
                     <li class="nav-item @if($page == '/') active @endif">
                         <a href="/">Home</a>
                     </li>
+                    <li class="nav-item">
+                    <a href="{{url('hotels')}}">Hotels</a>
+                </li>
                     <li class="nav-item @if($page == 'about') active @endif">
                         <a href="about">About</a>
                     </li>
@@ -42,26 +45,30 @@
                     </ul>
             </div>
         </div>
-            <div class='the-best'>
+            <!-- <div class='the-best'>
               <div></div>
                 <span>
                     Best Website For Your Future Life
                 </span>
-            </div>
+            </div> -->
             <div class="search-box">
-                <h3>Search Your Favorite Hotel</h3>
+                <h3>Search and book Your Favorite Hotel</h3>
+                <form action="{{ url('search') }}" method="post" class="needs-validation" novalidate="" id="search-form">
+                @csrf
                 <div class="input-group ps-5">
                     <div class="search-item" id="navbar-search-autocomplete" class="form-outline">
-                        <select type="text" class="search-field">
+                        <select type="text" class="search-field" name="search_term">
                             <option disabled selected>City</option>
-                            <option value="kabul">kabul</option>
-                            <option value="herat">Herat</option>
-                            <option value="mazar">Mazari Shareef</option>
-                            <option value="jlalabad">Jlalabad</option>
+                            <option value="1">kabul</option>
+                            <option value="2">Herat</option>
+                            <option value="3">Mazari Shareef</option>
+                            <option value="4">Nangarhar</option>
+                            <option value="5">Kandahar</option>
                         </select>
-                        <button type="button" class="btn btn-primary mt-4"><a href="hotels">Search</a></button>
+                        <button type="submit" class="btn btn-primary mt-4">Search</button>
                     </div>
                 </div>
+</form>
             </div>
     </section>
 </body>

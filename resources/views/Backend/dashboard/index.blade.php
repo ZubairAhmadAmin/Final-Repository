@@ -2,7 +2,9 @@
 
 @section('contant')
         <div>
-            <a href="{{url('create')}}" class="btn btn-primary float-end">Add Hotel</a>
+            @if(in_array(Auth::user()->user_type, [1,2]))
+                <a href="{{url('create')}}" class="btn btn-primary float-end">Add Hotel</a>
+            @endif
         </div>
         <table class="table table-bordered table-striped">
         <thead>
@@ -29,8 +31,10 @@
                     <td>{{$item->total_salons}}</td>
                     <td>{{$item->total_capacity}}</td>
                     <td><a href="{{url('show-hotel/'. $item->id)}}" class="btn btn-success btn-sm">View</a></td>
-                    <td><a href="{{url('edit/'. $item->id)}}" class="btn btn-success btn-sm">Edit</a></td>
-                    <td><a href="{{url('delete/'.$item->id)}}" class="btn btn-danger btn-sm">Delete</a></td>
+                    @if(in_array(Auth::user()->user_type, [1,2]))
+                        <td><a href="{{url('edit/'. $item->id)}}" class="btn btn-success btn-sm">Edit</a></td>
+                        <td><a href="{{url('delete/'.$item->id)}}" class="btn btn-danger btn-sm">Delete</a></td>
+                    @endif
                 </tr>
             @endforeach
         </tbody>

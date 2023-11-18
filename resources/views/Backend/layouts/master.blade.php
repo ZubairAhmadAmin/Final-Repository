@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="{{asset('backend/dashboard.css')}}">
     <link rel="stylesheet" href="{{ asset('Bootstrap/Css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('js/jquery-ui/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{asset('backend/dashboard.css')}}">
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/jquery-ui/jquery-ui.min.js')}}"></script>
     <script src="{{asset('Bootstrap/Js/bootstrap.min.js')}}"></script>

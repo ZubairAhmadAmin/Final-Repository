@@ -3,15 +3,24 @@
 @section('contant')
 <div class="container">
     <form action="{{ url('store') }}" enctype="multipart/form-data" method="post" class="needs-validation" novalidate="" id="hotel-form">
-        {{-- @if (Session::has('success'))
+        @if (Session::has('success'))
             <div class="alert alert-success">{{ Session::get('success') }}</div>
-        @endif --}}
-        {{-- @if (Session::has('fail'))
+        @endif
+        @if (Session::has('fail'))
             <div class="alert alert-danger">{{ Session::get('fail') }}</div>
-        @endif --}}
+        @endif
         @if (session('status'))
             <div class="alert alert-success">{{session('status')}}</div>
         @endif
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         @csrf
         <div>
             <div class="card col-12 ">
@@ -27,12 +36,12 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                             <label for="hotel_name" class="form-label">Hotel name</label>
-                            <input type="text" class="form-control" id="hotel_name" name="hotel_name" placeholder="Hotel Name">
+                            <input type="text" class="form-control" id="hotel_name" name="hotel_name" placeholder="Hotel Name" value="{{ old('hotel_name') }}">
                             </div>
 
                             <div class="col-md-6">
                                 <label for="province" class="form-label">Province</label>
-                                <select class="form-select" id="province" name="city_id">
+                                <select class="form-select" id="province" name="city_id" value="{{ old('city_id') }}">
                                     <option value="">Choose city ...</option>
                                     @foreach($cities as $city)
                                         <option value="{{$city->id}}">{{$city->city_name}}</option>
@@ -43,28 +52,28 @@
                             <div class="col-6">
                             <label for="address" class="form-label">Address</label>
                             <div class="input-group has-validation">
-                                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{ old('address') }}">
                             </div>
                             </div>
 
                             <div class="col-6">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" value="{{ old('email') }}">
                             </div>
 
                             <div class="col-6">
                             <label for="mobile_number" class="form-label">Mobile number</label>
-                            <input type="text" class="form-control" id="mobile_number" name="mobile_number"  placeholder="+93 XXXX XXX XX">
+                            <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="+93 XXXX XXX XX" value="{{ old('mobile_number') }}">
                             </div>
 
                             <div class="col-6">
                             <label for="total_salons" class="form-label">Salons available</label>
-                            <input type="number" class="form-control" id="total_salons" name="total_salons" placeholder="Total salons available">
+                            <input type="number" class="form-control" id="total_salons" name="total_salons" placeholder="Total salons available" value="{{ old('total_salons') }}">
                             </div>
 
                             <div class="col-6">
                             <label for="total_capacity" class="form-label">Max guest capacity</label>
-                            <input type="number" class="form-control" id="total_capacity" name="total_capacity" placeholder="Total guest capacity">
+                            <input type="number" class="form-control" id="total_capacity" name="total_capacity" placeholder="Total guest capacity" value="{{ old('total_capacity') }}">
                             </div>
 
                             <div class="mb-3 col-6">
@@ -79,7 +88,7 @@
 
                             <div class="col-12">
                                 <label for="description" class="form-label">Hotel details</label>
-                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') }}</textarea>
                             </div>
                         </div>
 
@@ -383,8 +392,8 @@
                                             Please enter a valid email address for shipping updates.
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                            <a data-service="${serviceData['id']}" class="item-add">edit</a>
+                                    <div class="col-md-4" style="margin-top:35px">
+                                            <a href="javascript:void(0)" data-service="${serviceData['id']}" class="item-add">Save</a>
                                         </div>
                                     </div>
                                 </div>
@@ -465,17 +474,42 @@
         let service = hotelServicesData.find((service) => service.id == serviceId);
         console.log(hotelServicesData);
         console.log(service);
-        service.serviceItems = [];
-        let item = service.serviceItems.find((item) => item.id == itemId);
+        
+        if(service.hasOwnProperty("serviceItems")) {
+            let item = service.serviceItems.find((item) => item.id == itemId);
+            console.log(itemName + ' ' + itemId);
+            console.log(item);
+            if (item) {
+                console.log('inside if');
+                item['item-name'] = itemName;
+            } else {
+            console.log('inside else');
+            service.serviceItems = [];
+            service.serviceItems.push({'item-name': itemName, 'id' : service.serviceItems.length + 1 });
 
-        console.log(itemName + ' ' + itemId);
-        console.log(item);
-        if (item) {
-            console.log('inside if');
-            item['item-name'] = itemName;
+            let newItem = `<div class="row single-item">
+                            <input type="hidden" id="item-id" value="${parseInt(itemId) + 1}">
+                            <div class="col-4">
+                                <label for="item_name" class="form-label">Item name</label>
+                                <input type="text" class="form-control" id="item-name" name="item_name" placeholder="">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-3" style="margin-top:35px">
+                                    <a data-service="${service['id']}" class="item-add">Save</a>
+                                </div>
+                            </div>
+                        </div>`;
+
+            $(this).parent().parent().append(newItem);
+            $(this).parent().append(`<a data-service="${service['id']}" class="item-delete">Remove</a>`);
         }
+        }
+
         else {
             console.log('inside else');
+            service.serviceItems = [];
             service.serviceItems.push({'item-name': itemName, 'id' : service.serviceItems.length + 1 });
 
             let newItem = `<div class="row single-item">
@@ -488,7 +522,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 mt-3">
-                                    <a data-service="${service['id']}" class="item-add">edit</a>
+                                    <a data-service="${service['id']}" class="item-add">Save</a>
                                 </div>
                             </div>
                         </div>`;
@@ -505,6 +539,7 @@
     $(document).on('click', '.item-delete', function() {
         serviceId = $(this).data("service");
         let itemData = $(this).parent().parent();
+        console.log(serviceId);
 
         let service = hotelServicesData.find((service) => service.id == serviceId);
         console.log(service);
@@ -515,7 +550,7 @@
         console.log(itemId);
 
 
-        console.log(hotelServicesData);
+        console.log(itemData);
         itemData.remove();
     });
     

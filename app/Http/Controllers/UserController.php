@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index () {
-        $users = User::all();
+        if (\Auth::user()->user_type == 2) {
+            $users = User::all();
 
-        return view('Backend.dashboard.users', compact('users'));
+            return view('Backend.dashboard.users', compact('users'));
+        }
+    
     }
 }

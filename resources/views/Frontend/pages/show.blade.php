@@ -1,6 +1,7 @@
-@extends('Backend.layouts.master')
+@extends('Frontend.layouts.app')
 
-@section('contant')
+@section('style')
+
 <div class="container">
 <?php $images = json_decode($hotel->hotel_images); ?>
 @if (Session::has('success'))
@@ -12,10 +13,10 @@
         @if (session('status'))
             <div class="alert alert-success">{{session('status')}}</div>
         @endif
-<div class="d-flex justify-content-end" style="margin-bottom:5rem">
-    <button class="btn btn-primary px-5" type="button" data-bs-toggle="modal" data-bs-target="#bookHotelModal" style="float:right">
+<div class="d-flex justify-content-end pt-5" style="margin-bottom:5rem">
+    <a href="{{url('login')}}" class="btn btn-primary px-5" type="button" style="float:right">
       Book Hotel
-    </button>
+</a>
 </div>
 
 <div id="carouselExampleIndicators" class="carousel slide">
@@ -57,7 +58,7 @@
         <p>Owner: {{$hotel->owner->name}}</p>
         <p>Total Salons: {{$hotel->total_salons}}</p>
         <p>Total Capacity: {{$hotel->total_capacity}}</p>
-        <p class="lead">{{$hotel->description}}</p>
+        <p class="lead">Details: {{$hotel->description}}</p>
 
       </div>
       <div class="col-md-5">
@@ -102,7 +103,7 @@
                             <img class="shadow-sm" src="{{asset(Storage::url(json_decode($service->photos)[0]))}}" width="100%" height="225"/>
                             <div class="card-body">
                                 <h2>{{$service->name}}</h2>
-                                <p>Price: {{$service->price}} Afg</p>
+                                <p>Price: {{$service->price}}</p>
                                 <p class="card-text">{{$service->description}}</p>
                                 <div class="">
                                     @foreach($service->serviceItems as $item)
@@ -141,7 +142,7 @@
         </ul>
     </div>
 @endif
-            <div class="d-flex justify-content-between rounded-3 p-3 my-1" style="background-color:#ebe9e9">
+            <div class="row">
                 <div class="mb-3 col-md-6">
                     <label for="recipient-name" class="col-form-label" >Booking Date:</label>
                     <input type="text" class="form-control" id="my_date_picker" name="booking_date" value="{{ old('booking_date') }}">
@@ -151,18 +152,14 @@
                     <input type="text" class="form-control" id="guests-number" name="guests_number" value="{{ old('guests_number') }}">
                 </div>
             </div>
-            <div class="rounded-3 p-3 my-1" style="background-color:#ebe9e9">
-            <h4>Select Hotel Salons </h4>
+            <h4>Select Hotel Salons: </h4>
             @foreach($hotel->salons as $salon)
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" name="salons[]" id="inlineCheckbox1" value="{{$salon->id}}">
                     <label class="form-check-label" for="inlineCheckbox1">{{$salon->name}}</label>
                 </div>
             @endforeach
-            </div>
 
-            <div class="rounded-3 p-3" style="background-color:#ebe9e9">
-            <h4>Select Hotel Services </h4>
             @foreach($hotel->services as $service)
             <div class="col w-50 mt-3">
         <div class="card mb-4 rounded-3 shadow-sm">
@@ -187,9 +184,8 @@
         </div>
       </div>
             @endforeach
-        </div>
-
-          <div class="mb-3 col-md-12 rounded-3 p-3 mt-1" style="background-color:#ebe9e9">
+                
+          <div class="mb-3 col-md-6">
             <label for="message-text" class="col-form-label">Comment:</label>
             <textarea class="form-control" name="comment" id="message-text">{{ old('comment') }}</textarea>
           </div>
@@ -212,8 +208,8 @@
             $( "#my_date_picker" ).datepicker(); 
         });
         
-        @if (count($errors) > 0)
-    $('#bookHotelModal').modal('show');
+    //     @if (count($errors) > 0)
+    // $('#bookHotelModal').modal('show');
 @endif
     })
 </script>

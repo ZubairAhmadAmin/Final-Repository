@@ -32,8 +32,8 @@ Route::get('booking', function () {
 
 
 
-Route::get('/login', [CustomAuthController::class, 'login']) ->middleware('alreadyLoggedIn');
-Route::get('/register', [CustomAuthController::class, 'register']) ->middleware('alreadyLoggedIn');
+Route::get('/login', [CustomAuthController::class, 'login'])->middleware('alreadyLoggedIn');
+Route::get('/register', [CustomAuthController::class, 'register'])->middleware('alreadyLoggedIn');
 Route::post('/register-user', [CustomAuthController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [CustomAuthController::class, 'loginUser'])->name('login-user');
 Route::get('/logout', [CustomAuthController::class, 'logout']);
@@ -41,7 +41,7 @@ Route::get('/logout', [CustomAuthController::class, 'logout']);
 
 
 Route::get('dashboard', [HotelController::class, 'index']);
-Route::get('create', [HotelController::class, 'create']);
+Route::get('create', [HotelController::class, 'create'])->middleware('auth');;
 Route::post('store', [HotelController::class, 'store']);
 Route::get('show-hotel/{id}', [HotelController::class, 'show'])->name("showHotel");
 Route::get('edit/{id}', [HotelController::class, 'edit']);
@@ -58,5 +58,8 @@ Route::get('delete/{id}', [HotelBookingController::class, 'delete'])->name("dele
 Route::post('booking-status/{id}', [HotelBookingController::class, 'ApplyBookingStatusAction']);
 
 Route::get('users', [UserController::class, 'index']);
+
+Route::post('search', [HotelController::class, 'search']);
+
 
 

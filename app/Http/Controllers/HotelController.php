@@ -10,12 +10,13 @@ use App\Models\Hotel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\File;
 
 class HotelController extends Controller
 {
     public function index()
     { 
-        $hotels = Hotel::with('city')->get();
+        $hotels = Hotel::with('city', 'owner')->get();
         $city = City::with('hotels')->get();
         return view('Backend.dashboard.index', compact('hotels', 'city'));
     }
@@ -28,6 +29,24 @@ class HotelController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'hotel_name' => 'required|max:255',
+            'address' => 'required',
+            'email' => 'required',
+            'mobile_number' => 'required',
+            'total_salons' => 'required',
+            'total_capacity' => 'required',
+            'city_id' => 'required',
+            'hotel_images.*' => ['required', File::image()],
+            'hotel_services.*.photos' => ['required', File::image()],
+            'hotel_services.*.name' => 'required',
+            'hotel_services.*.price' => 'required|integer',
+            'hotel_services.serviceItems.*.name' => 'sometimes|required',
+            'hotel_salons.*.name' => 'required',
+            'hotel_salons.*.max_guests_capacity' => 'required',
+            'hotel_salons.*.photos' => ['required', File::image()],
+        ]);
+
         $hotel = new Hotel();
         $hotel->hotel_name = $request->input('hotel_name');
         $hotel->hotel_address = $request->input('address');
@@ -127,7 +146,12 @@ class HotelController extends Controller
     public function show($id)
     {
         $hotel = Hotel::with(['city', 'salons', 'services.serviceItems', 'owner'])->find($id);
-        return view('Backend.dashboard.show', compact('hotel'));
+
+        if (Auth::user()) {
+            return view('Backend.dashboard.show', compact('hotel'));
+        }
+
+        return view('Frontend.pages.show', compact('hotel'));
     }
 
     public function edit($id)
@@ -155,5 +179,15 @@ class HotelController extends Controller
         $hotel = Hotel::find($id);
         $hotel->delete();
         return redirect()->back()->with('success', 'hotel deleted succesfuly');
+    }
+
+    public function search(Request $request)
+    { 
+        $hotels = Hotel::with('owner', 'city')
+        ->whereHas('city', function($q) use ($request) {
+            $q->where('id', '=', $request->input('search_term'));
+        })->get();
+        $city = City::with('hotels')->get();
+        return view('Frontend.pages.hotels', compact('hotels', 'city'));
     }
 }
